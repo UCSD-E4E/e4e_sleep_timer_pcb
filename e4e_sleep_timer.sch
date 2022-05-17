@@ -8444,6 +8444,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="R6" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="0"/>
 <part name="TP13" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP20R" package3d_urn="urn:adsk.eagle:package:27973/1"/>
 <part name="TP14" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP20R" package3d_urn="urn:adsk.eagle:package:27973/1"/>
+<part name="R7" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="0"/>
 </parts>
 <sheets>
 <sheet>
@@ -8617,8 +8618,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <instance part="SUPPLY2" gate="GND" x="106.68" y="30.48" smashed="yes">
 <attribute name="VALUE" x="104.775" y="27.305" size="1.778" layer="96"/>
 </instance>
-<instance part="P+1" gate="1" x="55.88" y="106.68" smashed="yes">
-<attribute name="VALUE" x="53.34" y="101.6" size="1.778" layer="96" rot="R90"/>
+<instance part="P+1" gate="1" x="55.88" y="121.92" smashed="yes">
+<attribute name="VALUE" x="53.34" y="116.84" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="P2" gate="1" x="238.76" y="162.56" smashed="yes" rot="R180">
 <attribute name="VALUE" x="240.03" y="175.26" size="1.778" layer="96" rot="R180"/>
@@ -8697,6 +8698,10 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <attribute name="NAME" x="59.69" y="102.87" size="1.778" layer="95"/>
 <attribute name="TP_SIGNAL_NAME" x="62.23" y="100.33" size="1.778" layer="97"/>
 </instance>
+<instance part="R7" gate="G$1" x="55.88" y="111.76" smashed="yes" rot="R270">
+<attribute name="NAME" x="57.3786" y="115.57" size="1.778" layer="95" rot="R270"/>
+<attribute name="VALUE" x="52.578" y="115.57" size="1.778" layer="96" rot="R270"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -8728,15 +8733,14 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </net>
 <net name="+5V" class="0">
 <segment>
-<pinref part="P+1" gate="1" pin="+5V"/>
-<wire x1="55.88" y1="104.14" x2="55.88" y2="101.6" width="0.1524" layer="91"/>
-<pinref part="U1" gate="G$1" pin="E5V"/>
-<wire x1="55.88" y1="101.6" x2="50.8" y2="101.6" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="P+3" gate="1" pin="+5V"/>
 <pinref part="U5" gate="A" pin="H"/>
 <wire x1="180.34" y1="142.24" x2="180.34" y2="139.7" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R7" gate="G$1" pin="1"/>
+<pinref part="P+1" gate="1" pin="+5V"/>
+<wire x1="55.88" y1="116.84" x2="55.88" y2="119.38" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="USART1_TXD" class="0">
@@ -8876,6 +8880,20 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="50.8" y1="99.06" x2="60.96" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="VDD2" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="E5V"/>
+<pinref part="R7" gate="G$1" pin="2"/>
+<wire x1="50.8" y1="101.6" x2="55.88" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="101.6" x2="55.88" y2="106.68" width="0.1524" layer="91"/>
+<label x="55.88" y="106.68" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$6" pin="+5V"/>
+<wire x1="106.68" y1="152.4" x2="111.76" y2="152.4" width="0.1524" layer="91"/>
+<label x="111.76" y="152.4" size="1.778" layer="95"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
@@ -8889,18 +8907,19 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <approved hash="202,2,25.4,139.7,U1G$5,A4,,,,"/>
 <approved hash="202,2,25.4,137.16,U1G$5,A5,,,,"/>
 <approved hash="204,2,50.8,96.52,U1G$1,VDD,,,,"/>
-<approved hash="104,2,50.8,101.6,U1G$1,E5V,+5V,,,"/>
+<approved hash="104,2,50.8,101.6,U1G$1,E5V,VDD2,,,"/>
 <approved hash="204,2,50.8,106.68,U1G$1,+3V3_S1,,,,"/>
 <approved hash="204,2,50.8,104.14,U1G$1,+5V_S1,,,,"/>
 <approved hash="104,2,50.8,27.94,U1G$1,GND_S1,GND,,,"/>
-<approved hash="204,2,50.8,93.98,U1G$1,VIN_S1,,,,"/>
-<approved hash="204,2,50.8,99.06,U1G$1,VBAT,,,,"/>
+<approved hash="104,2,50.8,93.98,U1G$1,VIN_S1,N$6,,,"/>
+<approved hash="104,2,50.8,99.06,U1G$1,VBAT,N$9,,,"/>
 <approved hash="204,2,106.68,106.68,U1G$2,AVDD,,,,"/>
-<approved hash="204,2,106.68,104.14,U1G$2,U5V,,,,"/>
+<approved hash="104,2,106.68,104.14,U1G$2,U5V,N$8,,,"/>
 <approved hash="104,2,106.68,33.02,U1G$2,GND_S2,GND,,,"/>
-<approved hash="104,2,106.68,35.56,U1G$2,AGND,GND,,,"/>
+<approved hash="104,2,106.68,35.56,U1G$2,AGND,N$7,,,"/>
 <approved hash="204,2,78.74,165.1,U1G$3,AREF,,,,"/>
 <approved hash="204,2,106.68,149.86,U1G$6,+3V3,,,,"/>
+<approved hash="104,2,106.68,152.4,U1G$6,+5V,VDD2,,,"/>
 <approved hash="204,2,106.68,154.94,U1G$6,VIN,,,,"/>
 <approved hash="104,1,91.44,160.02,U2,VIN,VEXT,,,"/>
 <approved hash="113,2,124.356,92.606,FRAME1,,,,,"/>
