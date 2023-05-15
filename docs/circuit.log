@@ -1,0 +1,25 @@
+Circuit: * E:\workspace\sleep_timer\e4e_sleep_timer_pcb\docs\circuit.asc
+
+Error on line 4 : m1 5v n001 vdd1 vdd1 pja3416ae_r1_00001
+	 Unable to find definition of model ""
+Error on line 5 : m2 n001 sys_pwr 0 0 pja3416ae_r1_00001
+	 Unable to find definition of model ""
+Direct Newton iteration for .op point succeeded.
+
+Date: Thu Jul 21 21:21:23 2022
+Total elapsed time: 1.923 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 3925
+traniter = 3920
+tranpoints = 1919
+accept = 1735
+rejected = 184
+matrix size = 6
+fillins = 0
+solver = Normal
+Matrix Compiler1: 182 bytes object code size  0.1/0.1/[0.1]
+Matrix Compiler2: 408 bytes object code size  0.1/0.1/[0.1]
+
